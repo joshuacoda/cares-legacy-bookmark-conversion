@@ -22,16 +22,17 @@ The State released an updated CARES Data Dictionary that defines data elements u
 ```
 .
 ├── input/
-│   └── original/               # Original DOCX templates
+│   └── original/                   # Original DOCX templates
 ├── output/
-│   ├── bookmarks/              # Templates with visible bookmark names
-│   ├── json/                   # Templates with {{JsonPath}} json applied
-│   ├── bookmarks_tally.csv     # Per-document bookmark counts
-│   ├── final_tally.csv         # Replacement audit by document
-│   └── unique_bookmarks.csv    # All unique bookmarks encountered
-├── DataDictionary.xlsx         # State CARES data dictionary
-├── extract_bookmarks_to_docx.py        # Bookmark extraction and normalization
-├── apply_json_to_docx.py             # Bookmark → {{JsonPath}} replacement
+│   ├── bookmarks/                  # Templates with visible bookmark names
+│   ├── json/                       # Templates with {{JsonPath}} json applied
+│   ├── bookmarks_tally.csv         # Per-document bookmark counts
+│   ├── final_tally.csv             # Replacement audit by document
+│   └── unique_bookmarks.csv        # All unique bookmarks encountered
+├── DataDictionary.xlsx             # State CARES data dictionary
+├── main.py                         # Runs the entire pipeline
+├── extract_bookmarks_to_docx.py    # Bookmark extraction and normalization
+├── apply_json_to_docx.py           # Bookmark → {{JsonPath}} replacement
 └── README.md
 ```
 
