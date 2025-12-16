@@ -1,0 +1,261 @@
+{"CaresCorrespondence": {
+  "metaData": {
+    "docCategory": "",
+    "DocumentId": "",
+    "recipientId": "",
+    "securityFlag": "",
+    "formNo": "",
+    "formVersion": "",
+    "formTitle": "",
+    "callerId": "",
+    "templateId": "",
+    "applicationId": "",
+    "docSubCategory": ""
+  },
+  "formData": {
+    "ResourceProviderManagement": {
+      "BlankScreener": {
+        "Refferal": {
+          "ReferralDate": "",
+          "ReferralName": "",
+          "ReferralCheckbox": "",
+          "ReferralNumber": ""
+        },
+        "Allegation": ""
+      },
+      "EmergencyResponse": {
+        "EmergencyResponseReferralInformation": {
+          "Referral": {
+            "StreetAddress": "",
+            "Email": "",
+            "State": "",
+            "ZipCode": "",
+            "Phone": "",
+            "UserID": "",
+            "FaxNumber": "",
+            "City": "",
+            "County": ""
+          },
+          "CaseloadID": "",
+          "NameOfSocialWorker": {
+            "middle": "",
+            "last": "",
+            "title": "",
+            "first": "",
+            "wholeName": ""
+          },
+          "NameOfAgency": "",
+          "Date": ""
+        },
+        "HomeAddress": {
+          "AddressComments": "",
+          "CurrentLocationOfChildren": "",
+          "PhoneNumber": "",
+          "WholeHomeAddress": ""
+        },
+        "ReferralHistory": {
+          "RefferalID": "",
+          "ClientName": "",
+          "RefferalRole": "",
+          "RefferalDate": "",
+          "Allegation": {
+            "AbuseCategory": "",
+            "AllegationDispostion": "",
+            "AllegationType": "",
+            "AllegedPerpetrator": ""
+          }
+        },
+        "ScreenerInformation": {
+          "Title": "",
+          "PhoneNumber": "",
+          "Time": "",
+          "Caseload": "",
+          "Date": "",
+          "Name": {
+            "middle": "",
+            "last": "",
+            "title": "",
+            "first": "",
+            "wholeName": ""
+          },
+          "Location": ""
+        },
+        "CollateralInformation": {
+          "contactDate": "",
+          "collateralInformationDetails": {
+            "Address": {
+              "StreetAddress": "",
+              "Email": "",
+              "State": "",
+              "ZipCode": "",
+              "Phone": "",
+              "UserID": "",
+              "FaxNumber": "",
+              "City": "",
+              "County": ""
+            },
+            "WorkPhone": "",
+            "PrimaryPhone": "",
+            "CaseWorkerPhone": "",
+            "Sex": "",
+            "ForTo": "",
+            "CaseLoad": "",
+            "County": "",
+            "Name": "",
+            "Role": "",
+            "Language": "",
+            "SocialSecurity": "",
+            "DOB": "",
+            "Phone": "",
+            "AKA": "",
+            "CaseWorkerName": ""
+          },
+          "description": "",
+          "contactMethod": ""
+        },
+        "OthersNotInHome": {"othersNotInHomeDetails": {
+          "Address": {
+            "StreetAddress": "",
+            "Email": "",
+            "State": "",
+            "ZipCode": "",
+            "Phone": "",
+            "UserID": "",
+            "FaxNumber": "",
+            "City": "",
+            "County": ""
+          },
+          "WorkPhone": "",
+          "PrimaryPhone": "",
+          "CaseWorkerPhone": "",
+          "Sex": "",
+          "ForTo": "",
+          "CaseLoad": "",
+          "County": "",
+          "Name": "",
+          "Role": "",
+          "Language": "",
+          "SocialSecurity": "",
+          "DOB": "",
+          "Phone": "",
+          "AKA": "",
+          "CaseWorkerName": ""
+        }},
+        "ReporterInformation": {
+          "SecondaryPhone": "",
+          "Agency": "",
+          "Email": "",
+          "Description": "",
+          "Address": "",
+          "PrimaryPhone": "",
+          "Relationship": "",
+          "ReporterInformationStatus": "",
+          "ContactDate": "",
+          "ContactMethod": "",
+          "Name": ""
+        },
+        "Refferal": {
+          "ReferralDate": "",
+          "ReferralName": "",
+          "ReferralCheckbox": "",
+          "ReferralNumber": ""
+        },
+        "OthersInHome": {"othersInHomeDetails": {
+          "Address": {
+            "StreetAddress": "",
+            "Email": "",
+            "State": "",
+            "ZipCode": "",
+            "Phone": "",
+            "UserID": "",
+            "FaxNumber": "",
+            "City": "",
+            "County": ""
+          },
+          "WorkPhone": "",
+          "PrimaryPhone": "",
+          "CaseWorkerPhone": "",
+          "Sex": "",
+          "ForTo": "",
+          "CaseLoad": "",
+          "County": "",
+          "Name": "",
+          "Role": "",
+          "Language": "",
+          "SocialSecurity": "",
+          "DOB": "",
+          "Phone": "",
+          "AKA": "",
+          "CaseWorkerName": ""
+        }},
+        "CrossReportInformation": {
+          "Agency": "",
+          "Address": "",
+          "DateAndTimeOfReport": "",
+          "BadgeNo": "",
+          "OfficalContacted": "",
+          "Title": "",
+          "PhoneNumber": "",
+          "CrossReportedBy": ""
+        },
+        "Alerts": {
+          "PoliceReportNumber": "",
+          "Alerts": "",
+          "LawEnforcementAgency": ""
+        },
+        "VictimInformation": {
+          "Ethnicity": "",
+          "ICWAEligibility": "",
+          "SocialSecurity": "",
+          "Phone": "",
+          "SchoolDayCareAddress": "",
+          "victimInformationDetails": {
+            "Address": {
+              "StreetAddress": "",
+              "Email": "",
+              "State": "",
+              "ZipCode": "",
+              "Phone": "",
+              "UserID": "",
+              "FaxNumber": "",
+              "City": "",
+              "County": ""
+            },
+            "WorkPhone": "",
+            "PrimaryPhone": "",
+            "CaseWorkerPhone": "",
+            "Sex": "",
+            "ForTo": "",
+            "CaseLoad": "",
+            "County": "",
+            "Name": "",
+            "Role": "",
+            "Language": "",
+            "SocialSecurity": "",
+            "DOB": "",
+            "Phone": "",
+            "AKA": "",
+            "CaseWorkerName": ""
+          },
+          "CaseWorkerName": "",
+          "SchoolDayCareName": "",
+          "CaseLoad": "",
+          "Allegation": {
+            "AbuseCategory": "",
+            "AllegationDispostion": "",
+            "AllegationType": "",
+            "AllegedPerpetrator": ""
+          }
+        }
+      }
+    },
+    "ChildID": "",
+    "ChildrenName": "",
+    "Refferal": {
+      "ReferralDate": "",
+      "ReferralName": "",
+      "ReferralCheckbox": "",
+      "ReferralNumber": ""
+    }
+  }
+}}

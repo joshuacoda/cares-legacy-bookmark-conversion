@@ -1,0 +1,601 @@
+{"CaresCorrespondence": {
+  "Metadata": {
+    "countyImage": "",
+    "DocumentId": "",
+    "securityFlag": "",
+    "formVersion": "",
+    "formTitle": "",
+    "templateId": "",
+    "partialESign": "",
+    "docSubCategory": "",
+    "eSign": "",
+    "docCategory": "",
+    "recipientId": "",
+    "formNo": "",
+    "callerId": "",
+    "applicationId": "",
+    "jvPetition": "",
+    "countyName": ""
+  },
+  "formData": {"CaseManagement": {"HEP": {
+    "PastHealthIssues": [
+      {
+        "FirstVisit": "",
+        "NextVisit": "",
+        "ProblemDescription": "",
+        "HealthProblem": "",
+        "DiagnosedPhone": "",
+        "DiagnosedBy": "",
+        "CommunicableDisease": "",
+        "TreatmentPlan": ""
+      },
+      {
+        "FirstVisit": "",
+        "NextVisit": "",
+        "ProblemDescription": "",
+        "HealthProblem": "",
+        "DiagnosedPhone": "",
+        "DiagnosedBy": "",
+        "CommunicableDisease": "",
+        "TreatmentPlan": ""
+      }
+    ],
+    "PastProviders": [
+      {
+        "ProviderName": "",
+        "ClinicAddress": "",
+        "DateLastseen": "",
+        "ProviderType": "",
+        "ServicesFrom": ""
+      },
+      {
+        "ProviderName": "",
+        "ClinicAddress": "",
+        "DateLastseen": "",
+        "ProviderType": "",
+        "ServicesFrom": ""
+      }
+    ],
+    "AlertDetails": [
+      {
+        "FirstVisit": "",
+        "NextVisit": "",
+        "ProblemDescription": "",
+        "HealthProblem": "",
+        "DiagnosedPhone": "",
+        "DiagnosedBy": "",
+        "CommunicableDisease": "",
+        "TreatmentPlan": ""
+      },
+      {
+        "FirstVisit": "",
+        "NextVisit": "",
+        "ProblemDescription": "",
+        "HealthProblem": "",
+        "DiagnosedPhone": "",
+        "DiagnosedBy": "",
+        "CommunicableDisease": "",
+        "TreatmentPlan": ""
+      }
+    ],
+    "CurrentHealthIssues": [
+      {
+        "FirstVisit": "",
+        "NextVisit": "",
+        "ProblemDescription": "",
+        "HealthProblem": "",
+        "DiagnosedPhone": "",
+        "DiagnosedBy": "",
+        "CommunicableDisease": "",
+        "TreatmentPlan": ""
+      },
+      {
+        "FirstVisit": "",
+        "NextVisit": "",
+        "ProblemDescription": "",
+        "HealthProblem": "",
+        "DiagnosedPhone": "",
+        "DiagnosedBy": "",
+        "CommunicableDisease": "",
+        "TreatmentPlan": ""
+      }
+    ],
+    "MedicalHistory": [
+      {
+        "MaternalDetails": "",
+        "PaternalDetails": ""
+      },
+      {
+        "MaternalDetails": "",
+        "PaternalDetails": ""
+      }
+    ],
+    "ClientEducation": [
+      {
+        "StartDate": "",
+        "InstructionReceived": "",
+        "EndDate": ""
+      },
+      {
+        "StartDate": "",
+        "InstructionReceived": "",
+        "EndDate": ""
+      }
+    ],
+    "ChildDetails": {
+      "ChildName": "",
+      "ChildID": "",
+      "CourtNumber": "",
+      "ICWAEligibility": "",
+      "PolicyNumber": "",
+      "SchoolAddress": {
+        "OfficePhone": "",
+        "OtherPhone": "",
+        "FullAddress": "",
+        "Email": "",
+        "ZipCode": "",
+        "City": "",
+        "Apartment": "",
+        "County": "",
+        "AddressLine3": "",
+        "AddressLine2": "",
+        "AddressLine1": "",
+        "StreetAddress": "",
+        "State": "",
+        "Phone": "",
+        "UserID": "",
+        "FaxNumber": ""
+      },
+      "SchoolName": "",
+      "Gender": "",
+      "AKAName": "",
+      "MedicalRecord": "",
+      "PrimaryLanguage": "",
+      "SubstituteCareProvider": "",
+      "ChildAddress": {
+        "OfficePhone": "",
+        "OtherPhone": "",
+        "FullAddress": "",
+        "Email": "",
+        "ZipCode": "",
+        "City": "",
+        "Apartment": "",
+        "County": "",
+        "AddressLine3": "",
+        "AddressLine2": "",
+        "AddressLine1": "",
+        "StreetAddress": "",
+        "State": "",
+        "Phone": "",
+        "UserID": "",
+        "FaxNumber": ""
+      },
+      "ChildSSN": "",
+      "RelationshiptoChild": "",
+      "CaseNumber": "",
+      "SecondaryLanguage": "",
+      "SchoolGrade": "",
+      "InsuranceHMO": "",
+      "Age": "",
+      "ChildReligion": "",
+      "BirthDate": "",
+      "ChildEthnicity": ""
+    },
+    "LimitationCheck": "",
+    "DevelopmentalLimitations": {
+      "OtherLimitation": "",
+      "NonAmbulatory": "",
+      "NurologicalImpairment": "",
+      "SpecialDiet": "",
+      "MedicalProcedure": "",
+      "DelayedCognitive": "",
+      "DevelopmentallyDelayed": "",
+      "VisualImpairment": "",
+      "EMotionalDisorder": "",
+      "DevelopmentallyDisabled": "",
+      "HearingImpairment": "",
+      "LimitationDetails": "",
+      "SpeachImpairment": "",
+      "MedicalEquipment": "",
+      "SpecialEducation": "",
+      "DelayedMotor": ""
+    },
+    "AgencyInfo": {
+      "OfficePhone": "",
+      "OtherPhone": "",
+      "FullAddress": "",
+      "Email": "",
+      "ZipCode": "",
+      "City": "",
+      "Apartment": "",
+      "County": "",
+      "AddressLine3": "",
+      "AddressLine2": "",
+      "AddressLine1": "",
+      "StreetAddress": "",
+      "State": "",
+      "Phone": "",
+      "UserID": "",
+      "FaxNumber": ""
+    },
+    "CurrentHealthProviders": [
+      {
+        "ProviderName": "",
+        "ClinicAddress": "",
+        "DateLastseen": "",
+        "ProviderType": "",
+        "ServicesFrom": ""
+      },
+      {
+        "ProviderName": "",
+        "ClinicAddress": "",
+        "DateLastseen": "",
+        "ProviderType": "",
+        "ServicesFrom": ""
+      }
+    ],
+    "CurrentEducation": [
+      {
+        "GraduationMethod": "",
+        "GradeStartDate": "",
+        "ReducedPriceMeal": "",
+        "Grade": "",
+        "SchoolPerformance": "",
+        "EndDate": "",
+        "StartDate": "",
+        "SchoolInfo": "",
+        "TutoringCheck": "",
+        "LeavingSchoolReason": "",
+        "SchoolofOrigin": "",
+        "GradeEndDate": "",
+        "SchoolType": "",
+        "SchoolEnrollment": "",
+        "SpecialEducationNeeds": "",
+        "GradeLevel": "",
+        "ContactName": "",
+        "GraduationType": "",
+        "TeacherName": ""
+      },
+      {
+        "GraduationMethod": "",
+        "GradeStartDate": "",
+        "ReducedPriceMeal": "",
+        "Grade": "",
+        "SchoolPerformance": "",
+        "EndDate": "",
+        "StartDate": "",
+        "SchoolInfo": "",
+        "TutoringCheck": "",
+        "LeavingSchoolReason": "",
+        "SchoolofOrigin": "",
+        "GradeEndDate": "",
+        "SchoolType": "",
+        "SchoolEnrollment": "",
+        "SpecialEducationNeeds": "",
+        "GradeLevel": "",
+        "ContactName": "",
+        "GraduationType": "",
+        "TeacherName": ""
+      }
+    ],
+    "SpecialNeedsCheck": "",
+    "CurrentHealthSummary": "",
+    "PreviousEducation": [
+      {
+        "GraduationMethod": "",
+        "GradeStartDate": "",
+        "ReducedPriceMeal": "",
+        "Grade": "",
+        "SchoolPerformance": "",
+        "EndDate": "",
+        "StartDate": "",
+        "SchoolInfo": "",
+        "TutoringCheck": "",
+        "LeavingSchoolReason": "",
+        "SchoolofOrigin": "",
+        "GradeEndDate": "",
+        "SchoolType": "",
+        "SchoolEnrollment": "",
+        "SpecialEducationNeeds": "",
+        "GradeLevel": "",
+        "ContactName": "",
+        "GraduationType": "",
+        "TeacherName": ""
+      },
+      {
+        "GraduationMethod": "",
+        "GradeStartDate": "",
+        "ReducedPriceMeal": "",
+        "Grade": "",
+        "SchoolPerformance": "",
+        "EndDate": "",
+        "StartDate": "",
+        "SchoolInfo": "",
+        "TutoringCheck": "",
+        "LeavingSchoolReason": "",
+        "SchoolofOrigin": "",
+        "GradeEndDate": "",
+        "SchoolType": "",
+        "SchoolEnrollment": "",
+        "SpecialEducationNeeds": "",
+        "GradeLevel": "",
+        "ContactName": "",
+        "GraduationType": "",
+        "TeacherName": ""
+      }
+    ],
+    "WorkerDetails": {
+      "Email": "",
+      "Agency": "",
+      "Number": "",
+      "Address": {
+        "OfficePhone": "",
+        "OtherPhone": "",
+        "FullAddress": "",
+        "Email": "",
+        "ZipCode": "",
+        "City": "",
+        "Apartment": "",
+        "County": "",
+        "AddressLine3": "",
+        "AddressLine2": "",
+        "AddressLine1": "",
+        "StreetAddress": "",
+        "State": "",
+        "Phone": "",
+        "UserID": "",
+        "FaxNumber": ""
+      },
+      "Phone": "",
+      "Signature": "",
+      "Title": "",
+      "Date": "",
+      "Name": ""
+    },
+    "PastHealthReferrals": [
+      {
+        "ReferralDate": "",
+        "ConsentType": "",
+        "ReferralComments": "",
+        "OutofCounty": "",
+        "ReferralOutcome": "",
+        "ReferralType": "",
+        "ReferralTo": "",
+        "ConsentDate": "",
+        "OutcomeDate": ""
+      },
+      {
+        "ReferralDate": "",
+        "ConsentType": "",
+        "ReferralComments": "",
+        "OutofCounty": "",
+        "ReferralOutcome": "",
+        "ReferralType": "",
+        "ReferralTo": "",
+        "ConsentDate": "",
+        "OutcomeDate": ""
+      }
+    ],
+    "SensitiveCheck": "",
+    "AllergiesDetails": [
+      {
+        "FirstVisit": "",
+        "NextVisit": "",
+        "ProblemDescription": "",
+        "HealthProblem": "",
+        "DiagnosedPhone": "",
+        "DiagnosedBy": "",
+        "CommunicableDisease": "",
+        "TreatmentPlan": ""
+      },
+      {
+        "FirstVisit": "",
+        "NextVisit": "",
+        "ProblemDescription": "",
+        "HealthProblem": "",
+        "DiagnosedPhone": "",
+        "DiagnosedBy": "",
+        "CommunicableDisease": "",
+        "TreatmentPlan": ""
+      }
+    ],
+    "CurrentHealthScreens": [
+      {
+        "ScreeningComments": "",
+        "ScreeningType": "",
+        "ScreeningResults": "",
+        "ScreenedBy": "",
+        "ScreeningDate": ""
+      },
+      {
+        "ScreeningComments": "",
+        "ScreeningType": "",
+        "ScreeningResults": "",
+        "ScreenedBy": "",
+        "ScreeningDate": ""
+      }
+    ],
+    "PastHealthData": [
+      {
+        "StartDate": "",
+        "MedicalNecessity": "",
+        "InterventionEndDate": "",
+        "EndReason": "",
+        "InterventionStartDate": "",
+        "InterventionComments": "",
+        "Comments": "",
+        "InterventionChoice": "",
+        "PlanType": "",
+        "NecessityDate": "",
+        "EndDate": ""
+      },
+      {
+        "StartDate": "",
+        "MedicalNecessity": "",
+        "InterventionEndDate": "",
+        "EndReason": "",
+        "InterventionStartDate": "",
+        "InterventionComments": "",
+        "Comments": "",
+        "InterventionChoice": "",
+        "PlanType": "",
+        "NecessityDate": "",
+        "EndDate": ""
+      }
+    ],
+    "CurrentHealthExam": [
+      {
+        "ExamType": "",
+        "HeightPercentile": "",
+        "Comments": "",
+        "ExamProvider": "",
+        "Height": "",
+        "WeightPercentile": "",
+        "ExamDate": "",
+        "Age": "",
+        "Weight": "",
+        "HeadCircumference": ""
+      },
+      {
+        "ExamType": "",
+        "HeightPercentile": "",
+        "Comments": "",
+        "ExamProvider": "",
+        "Height": "",
+        "WeightPercentile": "",
+        "ExamDate": "",
+        "Age": "",
+        "Weight": "",
+        "HeadCircumference": ""
+      }
+    ],
+    "CurrentHealthReferrals": [
+      {
+        "ReferralDate": "",
+        "ConsentType": "",
+        "ReferralComments": "",
+        "OutofCounty": "",
+        "ReferralOutcome": "",
+        "ReferralType": "",
+        "ReferralTo": "",
+        "ConsentDate": "",
+        "OutcomeDate": ""
+      },
+      {
+        "ReferralDate": "",
+        "ConsentType": "",
+        "ReferralComments": "",
+        "OutofCounty": "",
+        "ReferralOutcome": "",
+        "ReferralType": "",
+        "ReferralTo": "",
+        "ConsentDate": "",
+        "OutcomeDate": ""
+      }
+    ],
+    "BirthHistory": {
+      "PrenatalComments": "",
+      "Apgar": "",
+      "BirthPlace": "",
+      "Length": "",
+      "GestationAge": "",
+      "ToxicologyScreening": "",
+      "NewBornScreening": "",
+      "BirthLocation": "",
+      "Weight": "",
+      "HeadCircumference": ""
+    },
+    "CurrentImmunizations": [
+      {
+        "ImmunizationType": "",
+        "GivenWaiveDate": "",
+        "Waived": "",
+        "NextDueDate": "",
+        "Provider": ""
+      },
+      {
+        "ImmunizationType": "",
+        "GivenWaiveDate": "",
+        "Waived": "",
+        "NextDueDate": "",
+        "Provider": ""
+      }
+    ],
+    "EducationInfo": [
+      {
+        "IEPIIFSP": "",
+        "SemesterofCollege": "",
+        "HighSchoolGraduated": "",
+        "VocationalTraining": "",
+        "IEPDate": "",
+        "CAERRelationship": "",
+        "EducationalRecords": "",
+        "TransitionalIndependent": "",
+        "RemaininSchool": "",
+        "EducationRepresentative": "",
+        "PhoneNumber": "",
+        "DecisionDate": "",
+        "LimitedRights": ""
+      },
+      {
+        "IEPIIFSP": "",
+        "SemesterofCollege": "",
+        "HighSchoolGraduated": "",
+        "VocationalTraining": "",
+        "IEPDate": "",
+        "CAERRelationship": "",
+        "EducationalRecords": "",
+        "TransitionalIndependent": "",
+        "RemaininSchool": "",
+        "EducationRepresentative": "",
+        "PhoneNumber": "",
+        "DecisionDate": "",
+        "LimitedRights": ""
+      }
+    ],
+    "CurrentHealthData": [
+      {
+        "StartDate": "",
+        "MedicalNecessity": "",
+        "InterventionEndDate": "",
+        "EndReason": "",
+        "InterventionStartDate": "",
+        "InterventionComments": "",
+        "Comments": "",
+        "InterventionChoice": "",
+        "PlanType": "",
+        "NecessityDate": "",
+        "EndDate": ""
+      },
+      {
+        "StartDate": "",
+        "MedicalNecessity": "",
+        "InterventionEndDate": "",
+        "EndReason": "",
+        "InterventionStartDate": "",
+        "InterventionComments": "",
+        "Comments": "",
+        "InterventionChoice": "",
+        "PlanType": "",
+        "NecessityDate": "",
+        "EndDate": ""
+      }
+    ],
+    "PastHealthScreens": [
+      {
+        "ScreeningComments": "",
+        "ScreeningType": "",
+        "ScreeningResults": "",
+        "ScreenedBy": "",
+        "ScreeningDate": ""
+      },
+      {
+        "ScreeningComments": "",
+        "ScreeningType": "",
+        "ScreeningResults": "",
+        "ScreenedBy": "",
+        "ScreeningDate": ""
+      }
+    ]
+  }}}
+}}

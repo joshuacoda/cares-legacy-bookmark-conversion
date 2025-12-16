@@ -1,0 +1,74 @@
+{"CARESDocGen": {
+  "TemplateData": {
+    "Applicant1": {
+      "occupation": "",
+      "ethnicity": "",
+      "workSchedule": "",
+      "birthDate": "",
+      "genderIdentity": "",
+      "primaryPhone": "",
+      "tribalAffiliation": "",
+      "name": "",
+      "employer": "",
+      "pronouns": "",
+      "email": "",
+      "primaryLanguage": "",
+      "secondaryLanguage": ""
+    },
+    "homeHealthAndSafetyAssessment": {
+      "residenceType": "",
+      "relevantInformation": "",
+      "numberofBathrooms": null,
+      "documentedAlternativePlan": "",
+      "dapApprovedFor": "",
+      "homeAndGroundComplianceWrittenDirective": "",
+      "detailsOfPrevailingStandardsForIndian": "",
+      "otherInformation": "",
+      "numberofBedrooms": null
+    },
+    "Applicant2": {
+      "occupation": "",
+      "ethnicity": "",
+      "workSchedule": "",
+      "birthDate": "",
+      "genderIdentity": "",
+      "primaryPhone": "",
+      "tribalAffiliation": "",
+      "name": "",
+      "employer": "",
+      "pronouns": "",
+      "email": "",
+      "primaryLanguage": "",
+      "secondaryLanguage": ""
+    },
+    "Application": [
+      {
+        "nocharacterReferenceReason": "",
+        "applicationRecievedOn": "",
+        "icpcrequest": "",
+        "characterReferencesProvided": "",
+        "recievedRequestingStateOn": "",
+        "familyPrimaryInterest": "",
+        "noofreferences": ""
+      },
+      {
+        "nocharacterReferenceReason": "",
+        "applicationRecievedOn": "",
+        "icpcrequest": "",
+        "characterReferencesProvided": "",
+        "recievedRequestingStateOn": "",
+        "familyPrimaryInterest": "",
+        "noofreferences": ""
+      }
+    ]
+  },
+  "Metadata": {
+    "nameOfFamily": "",
+    "resourceFamilyAddress": "",
+    "resourceFamilyMailingAddress": "",
+    "dateOfApprovalOrDeniel": "",
+    "rfaIDNumber": "",
+    "writtenReportCompletedBy": "",
+    "agencyInformation": ""
+  }
+}}

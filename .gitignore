@@ -1,0 +1,29 @@
+# Python cache
+__pycache__/
+*.pyc
+
+# Virtual environments
+venv/
+.env/
+
+# Ignore contents of these folders, but allow their .gitkeep
+output/bookmarks/*
+!output/bookmarks/.gitkeep
+
+output/json/*
+!output/json/.gitkeep
+
+# Also ignore raw input/original contents but keep folder if desired
+input/original/*
+!input/original/.gitkeep
+
+# Ignore all CSV files in output/ directory
+output/**/*.csv
+output/*.csv
+
+# Office temporary files
+~$*.docx
+
+# IDE configs
+.vscode/
+.idea/
