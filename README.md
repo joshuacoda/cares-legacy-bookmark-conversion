@@ -1,6 +1,6 @@
 # CARES Legacy Bookmark Conversion
 
-This project automates the conversion of legacy Microsoft Word (DOCX) bookmarks used in CARES correspondence templates into standardized token placeholders derived from the State CARES Data Dictionary **JSON Path** definitions.
+This project automates the conversion of legacy Microsoft Word (DOCX) bookmarks used in CARES correspondence templates into standardized json placeholders derived from the State CARES Data Dictionary **JSON Path** definitions.
 
 It supports a full, auditable workflow for modernizing legacy correspondence templates.
 
@@ -8,11 +8,11 @@ It supports a full, auditable workflow for modernizing legacy correspondence tem
 
 ## Purpose
 
-The State released an updated CARES Data Dictionary that defines data elements using **JSON Path** expressions rather than legacy Word bookmark tokens. This repository bridges that gap by:
+The State released an updated CARES Data Dictionary that defines data elements using **JSON Path** expressions rather than legacy Word bookmark json. This repository bridges that gap by:
 
 - Identifying and validating legacy bookmarks in DOCX templates
 - Ensuring bookmarks align with the official CARES Data Dictionary
-- Replacing legacy bookmark placeholders with `{{JsonPath}}` tokens
+- Replacing legacy bookmark placeholders with `{{JsonPath}}` json
 - Producing traceable audit outputs for compliance and QA
 
 ---
@@ -25,7 +25,7 @@ The State released an updated CARES Data Dictionary that defines data elements u
 │   └── original/               # Original DOCX templates
 ├── output/
 │   ├── bookmarks/              # Templates with visible bookmark names
-│   ├── tokens/                 # Templates with {{JsonPath}} tokens applied
+│   ├── json/                   # Templates with {{JsonPath}} json applied
 │   ├── bookmarks_tally.csv     # Per-document bookmark counts
 │   ├── final_tally.csv         # Replacement audit by document
 │   └── unique_bookmarks.csv    # All unique bookmarks encountered
@@ -44,7 +44,7 @@ The Excel data dictionary **must** contain the following columns:
 - **Bookmark Name** – legacy bookmark identifier used in DOCX templates
 - **Json Path** – CARES JSON Path value (without `{{ }}`)
 
-The scripts automatically wrap JSON Path values in `{{ }}` during token generation.
+The scripts automatically wrap JSON Path values in `{{ }}` during json generation.
 
 Example:
 ```
@@ -78,25 +78,25 @@ Only bookmarks listed in the Data Dictionary are processed.
 
 ---
 
-### 2. Apply JSON Path Tokens
+### 2. Apply JSON Path
 
-Replaces visible bookmark names with `{{JsonPath}}` tokens using the Data Dictionary.
+Replaces visible bookmark names with `{{JsonPath}}` json using the Data Dictionary.
 
 ```bash
 python apply_json_to_docx.py
 ```
 
 Outputs:
-- `output/tokens/*.docx`
+- `output/json/*.docx`
 - `final_tally.csv`
 
 ---
 
 ## Key Features
 
-- Uses **Json Path** as the authoritative token source
+- Uses **Json Path** as the authoritative json source
 - Strict enforcement of `Bookmark Name` from the official dictionary
-- Automatic `{{ }}` token wrapping
+- Automatic `{{ }}` json wrapping
 - Table-aware DOCX parsing
 - Full audit trail of replacements
 - Safe handling of missing or invalid bookmarks
