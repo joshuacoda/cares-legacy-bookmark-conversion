@@ -49,12 +49,12 @@ The scripts automatically wrap JSON Path values in `{{ }}` during token generati
 Example:
 ```
 Bookmark Name: ACDateAdopted
-Json Path: $.formData.CountyLegacyDataElements.AdoptChild.DateAdopted
+Json Path: CaresCorrespondence.formData.CountyLegacyDataElements.AdoptChild.DateAdopted
 ```
 
 Becomes:
 ```
-{{$.formData.CountyLegacyDataElements.AdoptChild.DateAdopted}}
+{{CaresCorrespondence.formData.CountyLegacyDataElements.AdoptChild.DateAdopted}}
 ```
 
 ---
