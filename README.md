@@ -66,7 +66,7 @@ Becomes:
 Processes original DOCX files and replaces valid bookmarks with their visible bookmark names.
 
 ```bash
-python extract_bookmarks.py
+python apply_bookmarks_to_docx.py
 ```
 
 Outputs:
@@ -83,7 +83,7 @@ Only bookmarks listed in the Data Dictionary are processed.
 Replaces visible bookmark names with `{{JsonPath}}` tokens using the Data Dictionary.
 
 ```bash
-python apply_tokens.py
+python apply_json_to_docx.py
 ```
 
 Outputs:
@@ -126,5 +126,4 @@ MIT License. See `LICENSE` file for details.
 
 ## Maintainer
 
-Joshua Coda  
-CARES Legacy Correspondence Modernization
+Joshua Coda
