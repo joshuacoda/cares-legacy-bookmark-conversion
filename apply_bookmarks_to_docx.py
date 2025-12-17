@@ -2,21 +2,24 @@ import re
 import unicodedata
 from pathlib import Path
 import csv
+import copy
+import traceback
 
-import pandas as pd  # NEW: for reading Excel
+import pandas as pd
 
 from docx import Document
 from docx.oxml import OxmlElement
 from docx.oxml.ns import qn
 
 # ----------------------------------------------------------------------
-# CONFIG
+# CONFIG (paths are relative to this script file)
 # ----------------------------------------------------------------------
-INPUT_DIR = Path("input/original")
-OUTPUT_DIR = Path("output/bookmarks")
-TALLY_FILE = OUTPUT_DIR.parent / "bookmarks_tally.csv"
-UNIQUE_FILE = OUTPUT_DIR.parent / "unique_bookmarks.csv"
-DATA_DICT_FILE = Path("CWS-CARES Forms Data Dictionary-CountDataElements V0.01.xlsx")  # NEW
+BASE_DIR = Path(__file__).resolve().parent
+INPUT_DIR = BASE_DIR / "input" / "original"
+OUTPUT_DIR = BASE_DIR / "output" / "bookmarks"
+TALLY_FILE = BASE_DIR / "output" / "bookmarks_tally.csv"
+UNIQUE_FILE = BASE_DIR / "output" / "unique_bookmarks.csv"
+DATA_DICT_FILE = BASE_DIR / "CWS-CARES Forms Data Dictionary-CountDataElements V0.01.xlsx"
 
 
 # ----------------------------------------------------------------------
@@ -28,52 +31,18 @@ def ensure_dirs():
 
 
 def sanitize_filename(stem: str) -> str:
-    cleaned = re.sub(r"\W+", "_", stem)
-    cleaned = cleaned.strip("_")
+    cleaned = re.sub(r"\W+", "_", stem).strip("_")
     return cleaned or "document"
 
 
 def iter_bookmark_starts(doc):
-    """
-    Yield (bookmark_element, name) for all bookmarkStart elements in the main body.
-    """
     for bkm in doc.element.body.iter(qn("w:bookmarkStart")):
         name = bkm.get(qn("w:name"))
         if name:
             yield bkm, name
 
 
-def get_paragraph_element(elm):
-    """
-    Walk up the XML tree until we hit a w:p (paragraph) element.
-    """
-    while elm is not None and elm.tag != qn("w:p"):
-        elm = elm.getparent()
-    return elm
-
-
-def replace_paragraph_with_text(p_elm, text: str):
-    """
-    Replace all content of a paragraph (including fields, bookmarks, runs)
-    with a single text run containing `text`.
-    """
-    for child in list(p_elm):
-        p_elm.remove(child)
-
-    r = OxmlElement("w:r")
-    t = OxmlElement("w:t")
-    t.text = text
-    r.append(t)
-    p_elm.append(r)
-
-
 def normalize_bookmark_name(name: str) -> str:
-    """
-    Normalize bookmark name for CSV:
-    - Strip leading/trailing whitespace
-    - Normalize Unicode
-    - Drop non-ASCII characters
-    """
     s = name.strip()
     s = unicodedata.normalize("NFKD", s)
     s = s.encode("ascii", "ignore").decode("ascii")
@@ -81,70 +50,136 @@ def normalize_bookmark_name(name: str) -> str:
 
 
 def load_valid_bookmarks_from_excel(path: Path) -> set[str]:
-    """
-    Load valid bookmark names from DataDictionary.xlsx.
-    Expects column: 'Bookmark Name'
-    Only the 'Bookmark Name' values are used as a filter here.
-    """
+    if not path.exists():
+        raise FileNotFoundError(f"Excel data dictionary not found: {path}")
     df = pd.read_excel(path)
-
     if "Bookmark Name" not in df.columns:
         raise ValueError("DataDictionary.xlsx must have a 'Bookmark Name' column")
-
-    bookmarks = (
-        df["Bookmark Name"]
-        .dropna()
-        .astype(str)
-        .str.strip()
-    )
-
-    return set(bookmarks)
+    return set(df["Bookmark Name"].dropna().astype(str).str.strip())
 
 
+def get_paragraph_element(elm):
+    while elm is not None and elm.tag != qn("w:p"):
+        elm = elm.getparent()
+    return elm
 
-def process_document(
-    input_path: Path,
-    unique_set: set,
-    valid_bookmarks: set[str],
-) -> tuple[str, int]:
-    """
-    Process a single .docx file:
-    - For every bookmark whose name is in `valid_bookmarks`
-      AND does NOT start with 'Text' or 'Check' (case-insensitive),
-      remove contents of its paragraph and insert the bookmark name as plain text.
-    - Bookmarks not in `valid_bookmarks` are ignored.
-    """
+
+def find_bookmark_end(doc, start):
+    start_id = start.get(qn("w:id"))
+    if start_id is None:
+        return None
+    for end in doc.element.body.iter(qn("w:bookmarkEnd")):
+        if end.get(qn("w:id")) == start_id:
+            return end
+    return None
+
+
+def _make_run_text(text: str):
+    r = OxmlElement("w:r")
+    t = OxmlElement("w:t")
+    t.set(qn("xml:space"), "preserve")
+    t.text = text
+    r.append(t)
+    return r
+
+
+# ----------------------------------------------------------------------
+# STRATEGY:
+# 1) Split paragraph before bookmarkStart to preserve any prefix label text.
+# 2) Replace everything inside bookmark range with bookmark name.
+# ----------------------------------------------------------------------
+def split_paragraph_before_bookmark(bkm_start) -> bool:
+    p = get_paragraph_element(bkm_start)
+    if p is None:
+        return False
+
+    p_parent = p.getparent()
+    if p_parent is None:
+        return False
+
+    children = list(p)
+    try:
+        i_start = children.index(bkm_start)
+    except ValueError:
+        return False
+
+    has_ppr = (len(children) > 0 and children[0].tag == qn("w:pPr"))
+    first_movable_idx = 1 if has_ppr else 0
+
+    # Nothing before the bookmark other than pPr
+    if i_start <= first_movable_idx:
+        return False
+
+    # Create new paragraph and copy pPr if present
+    new_p = OxmlElement("w:p")
+    if has_ppr:
+        new_p.append(copy.deepcopy(children[0]))
+
+    # Move nodes before bookmarkStart into new paragraph
+    to_move = children[first_movable_idx:i_start]
+    for node in to_move:
+        p.remove(node)
+        new_p.append(node)
+
+    # Insert new paragraph immediately before original paragraph
+    parent_children = list(p_parent)
+    try:
+        p_index = parent_children.index(p)
+    except ValueError:
+        return False
+
+    p_parent.insert(p_index, new_p)
+    return True
+
+
+def replace_bookmark_range_with_text(doc, bkm_start, text: str) -> bool:
+    bkm_end = find_bookmark_end(doc, bkm_start)
+    if bkm_end is None:
+        return False
+
+    start_parent = bkm_start.getparent()
+    end_parent = bkm_end.getparent()
+    if start_parent is None or start_parent != end_parent:
+        return False  # skip complex spanning cases
+
+    parent = start_parent
+    children = list(parent)
+    try:
+        i_start = children.index(bkm_start)
+        i_end = children.index(bkm_end)
+    except ValueError:
+        return False
+
+    for child in children[i_start + 1 : i_end]:
+        parent.remove(child)
+
+    parent.insert(i_start + 1, _make_run_text(text))
+    return True
+
+
+def process_document(input_path: Path, unique_set: set, valid_bookmarks: set[str]) -> tuple[str, int]:
     doc = Document(input_path)
     bookmark_count = 0
 
-    # Gather first to avoid modifying while iterating
     bookmarks_to_process = list(iter_bookmark_starts(doc))
 
     for bkm, name in bookmarks_to_process:
         lower_name = name.lower()
 
-        # Skip "Text..." and "Check..." bookmarks
         if lower_name.startswith("text") or lower_name.startswith("check"):
             continue
 
-        # Only handle bookmarks that exist in the data_dictionary
-        # (compare against the raw name; if you want case-insensitive,
-        # you could store a lowercased set instead).
         if name not in valid_bookmarks:
             continue
 
-        # Add normalized name to unique set for CSV
         cleaned = normalize_bookmark_name(name)
         if cleaned:
             unique_set.add(cleaned)
 
-        p_elm = get_paragraph_element(bkm)
-        if p_elm is None:
-            continue
+        split_paragraph_before_bookmark(bkm)
 
-        # Replace paragraph contents with the bookmark name itself
-        replace_paragraph_with_text(p_elm, name)
-        bookmark_count += 1
+        if replace_bookmark_range_with_text(doc, bkm, name):
+            bookmark_count += 1
 
     stem = sanitize_filename(input_path.stem)
     output_filename = f"{stem}.docx"
@@ -162,16 +197,19 @@ def write_tally(tally_rows):
 
 
 def write_unique_bookmarks(unique_set: set):
-    """
-    Write CSV of unique normalized bookmark names.
-    Columns: bookmark_name, token
-    'token' is left empty for now.
-    """
     with open(UNIQUE_FILE, "w", newline="", encoding="utf-8") as f:
         writer = csv.writer(f)
         writer.writerow(["bookmark_name", "json"])
         for name in sorted(unique_set):
             writer.writerow([name, ""])
+
+
+def find_input_docx_files(input_dir: Path) -> list[Path]:
+    if not input_dir.exists():
+        return []
+    # recursive, case-insensitive .docx
+    files = [p for p in input_dir.rglob("*") if p.is_file() and p.suffix.lower() == ".docx"]
+    return files
 
 
 # ----------------------------------------------------------------------
@@ -180,18 +218,38 @@ def write_unique_bookmarks(unique_set: set):
 def main():
     ensure_dirs()
 
-    # Load bookmark filter from Excel
+    print(f"BASE_DIR:   {BASE_DIR}")
+    print(f"INPUT_DIR:  {INPUT_DIR}")
+    print(f"OUTPUT_DIR: {OUTPUT_DIR}")
+    print(f"EXCEL:      {DATA_DICT_FILE}")
+
     valid_bookmarks = load_valid_bookmarks_from_excel(DATA_DICT_FILE)
+
+    paths = find_input_docx_files(INPUT_DIR)
+    if not paths:
+        print("No .docx files found. Check INPUT_DIR and your working folder.")
+        return
+
+    print(f"Found {len(paths)} .docx file(s).")
 
     tally_rows = []
     unique_bookmarks = set()
 
-    for path in INPUT_DIR.glob("*.docx"):
-        output_name, count = process_document(path, unique_bookmarks, valid_bookmarks)
-        tally_rows.append([output_name, count])
+    for path in paths:
+        try:
+            output_name, count = process_document(path, unique_bookmarks, valid_bookmarks)
+            tally_rows.append([output_name, count])
+            print(f"Processed: {path.name} -> {output_name} ({count} bookmark(s))")
+        except Exception as e:
+            print(f"ERROR processing {path}: {e}")
+            traceback.print_exc()
 
-    write_tally(tally_rows)
-    write_unique_bookmarks(unique_bookmarks)
+    if tally_rows:
+        write_tally(tally_rows)
+        write_unique_bookmarks(unique_bookmarks)
+        print(f"Wrote outputs to: {OUTPUT_DIR}")
+        print(f"Tally CSV:  {TALLY_FILE}")
+        print(f"Unique CSV: {UNIQUE_FILE}")
 
 
 if __name__ == "__main__":
