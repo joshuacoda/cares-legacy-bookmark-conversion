@@ -1,0 +1,124 @@
+{
+  "CaresCorrespondence": {
+    "formData": {
+      "CountyLegacyDataElements": {
+        "Client": {
+          "ChildICWAEthnicity": "Native American",
+          "ChildDetail": {
+            "BirthFacility": "St. Mary Hospital",
+            "BirthCity": "Springfield",
+            "BirthState": "IL",
+            "Religion": "Catholic",
+            "ImmigrationStatus": "Citizen",
+            "EmailAddress": "child@example.com",
+            "AgeOfChild": "10",
+            "AgeUnit": "Years",
+            "SSN": "123-45-6789",
+            "Gender": "Female",
+            "PrimaryEthnicity": "Hispanic"
+          },
+          "ServiceComponentType": "Foster Care",
+          "PersonDetail": {
+            "FirstName": "Sophia",
+            "MiddleName": "Grace",
+            "LastName": "Johnson",
+            "Name": "Sophia Grace Johnson",
+            "BirthDate": "2015-06-25"
+          },
+          "CaseLoadName": "CaseTeam Alpha",
+          "CourtCaseNum": "A1234567",
+          "TribeName": "Cherokee",
+          "ConfidentialtyDate": "2025-12-01",
+          "CIN": "CIN1234"
+        },
+        "PrimarySocialWorkerCase": {
+          "CaseID": "SWC5678",
+          "JobTitle": "Case Worker",
+          "Name": "Jordan Smith",
+          "Region": "North",
+          "OfficeNum": "101",
+          "Phone": "555-123-4567",
+          "EmailAddress": "jsmith@agency.gov",
+          "CLName": "Alpha"
+        },
+        "Father": {
+          "PersonDetail": {
+            "FCID": "F123456",
+            "BirthFacility": "General Hospital",
+            "BirthCity": "Riverdale",
+            "BirthState": "NY",
+            "Religion": "Protestant",
+            "FirstName": "James",
+            "DeceasedDate": "2020-05-10",
+            "DeathType": "Accident",
+            "MilitaryStatus": "Veteran",
+            "Immigration": "Permanent Resident",
+            "MiddleName": "Alexander",
+            "LastName": "Brown",
+            "BirthDate": "1980-09-13",
+            "SSN": "111-22-3333",
+            "PrimaryLanguage": "English",
+            "Ethnicity": "Caucasian",
+            "EmailAddress": "father@example.com"
+          },
+          "MarriageDetail": {
+            "TermDate": "2018-08-01"
+          }
+        },
+        "Guardian": {
+          "PersonDetail": {
+            "GCID": "G123456",
+            "Religion": "Jewish",
+            "BirthFacility": "Community Hospital",
+            "BirthCity": "Lakeside",
+            "BirthState": "CA",
+            "FirstName": "Linda",
+            "MiddleName": "Marie",
+            "LastName": "Williams",
+            "DateOfBirth": "1978-03-22",
+            "SSN": "999-88-7777",
+            "EmailAddress": "guardian@example.com",
+            "PrimaryLanguage": "Spanish",
+            "PrimaryEthnicity": "Latino"
+          }
+        },
+        "Mother": {
+          "PersonDetail": {
+            "MCID": "M123456",
+            "BirthFacility": "Maternity Center",
+            "BirthCity": "Evergreen",
+            "BirthState": "TX",
+            "Religion": "Baptist",
+            "ImmigrationStatus": "Visa Holder",
+            "DeceasedDate": "",
+            "DeathCircumstancesType": "",
+            "MilitaryStatus": "None",
+            "FirstName": "Emily",
+            "MiddleName": "Elizabeth",
+            "LastName": "Taylor",
+            "DateOfBirth": "1982-07-14",
+            "SSN": "222-33-4444",
+            "PrimaryLanguage": "French",
+            "PrimaryEthnicity": "African American",
+            "EmailAddress": "mother@example.com"
+          },
+          "MarriageDetail": {
+            "TermType": "Divorce"
+          }
+        },
+        "Perpetrator": {
+          "PersonDetail": {
+            "PCID": "P123456",
+            "EmailAddress": "perpetrator@example.com",
+            "FirstName": "Alex",
+            "MiddleName": "Lee",
+            "LastName": "Reed",
+            "DateOfBirth": "1970-11-11",
+            "SSN": "333-44-5555",
+            "PrimaryLanguage": "German"
+          }
+        }
+      }
+    }
+  }
+}
