@@ -1,40 +1,79 @@
 # CARES Legacy Bookmark Conversion
 
-This project automates the conversion of legacy Microsoft Word (DOCX) bookmarks used in CARES correspondence templates into standardized json placeholders derived from the State CARES Data Dictionary **JSON Path** definitions.
+This project automates the conversion of legacy Microsoft Word (DOCX) bookmarks used in CARES correspondence templates into standardized JSON placeholders derived from the State CARES Data Dictionary **JSON Path** definitions.
 
-It supports a full, auditable workflow for modernizing legacy correspondence templates.
+The workflow is fully automated through `main.py` and produces auditable outputs suitable for compliance and QA review.
 
 ---
 
 ## Purpose
 
-The State released an updated CARES Data Dictionary that defines data elements using **JSON Path** expressions rather than legacy Word bookmark json. This repository bridges that gap by:
+The State released an updated CARES Data Dictionary that defines data elements using **JSON Path** expressions rather than legacy Word bookmark tokens. This repository bridges that gap by:
 
 - Identifying and validating legacy bookmarks in DOCX templates
 - Ensuring bookmarks align with the official CARES Data Dictionary
-- Replacing legacy bookmark placeholders with `{{JsonPath}}` json
+- Replacing legacy bookmark placeholders with `{{JsonPath}}` tokens
 - Producing traceable audit outputs for compliance and QA
 
 ---
 
 ## Repository Structure
 
-```
+```text
 .
 ├── input/
 │   └── original/                   # Original DOCX templates
 ├── output/
 │   ├── bookmarks/                  # Templates with visible bookmark names
-│   ├── json/                       # Templates with {{JsonPath}} json applied
+│   ├── converted/                 # Templates with {{JsonPath}} tokens applied
 │   ├── bookmarks_tally.csv         # Per-document bookmark counts
 │   ├── final_tally.csv             # Replacement audit by document
 │   └── unique_bookmarks.csv        # All unique bookmarks encountered
 ├── DataDictionary.xlsx             # State CARES data dictionary
 ├── main.py                         # Runs the entire pipeline
-├── extract_bookmarks_to_docx.py    # Bookmark extraction and normalization
-├── apply_json_to_docx.py           # Bookmark → {{JsonPath}} replacement
 └── README.md
 ```
+
+---
+
+## Workflow Overview
+
+The entire process is run using `main.py`. Individual scripts should not be run directly.
+
+### 1. Bookmark Extraction
+
+- Original DOCX templates are scanned for valid bookmarks
+- Only bookmarks listed in the Data Dictionary are processed
+- Bookmarks are replaced with visible bookmark names
+- Outputs are written to `output/bookmarks`
+- Audit files `bookmarks_tally.csv` and `unique_bookmarks.csv` are generated
+
+### 2. JSON Path Application
+
+- Visible bookmark names are replaced with `{{JsonPath}}` tokens
+- JSON paths are sourced from the Data Dictionary
+- Token wrapping with `{{ }}` is applied automatically
+- Optimized single-pass regex replacement is used for performance
+- Outputs are written to `output/converted`
+- `final_tally.csv` is generated for audit purposes
+
+---
+
+## Output Filename Prefix
+
+During execution, the user is prompted to enter an optional output filename prefix.
+
+```text
+Enter output filename prefix (leave blank for none):
+```
+
+Examples:
+
+- `Riverside` → `Riverside_original.docx`
+- `County_CA` → `County_CA_original.docx`
+- *(blank)* → `original.docx`
+
+This allows reuse of the same templates for multiple counties or deployments without code changes.
 
 ---
 
@@ -45,62 +84,32 @@ The Excel data dictionary **must** contain the following columns:
 - **Bookmark Name** – legacy bookmark identifier used in DOCX templates
 - **Json Path** – CARES JSON Path value (without `{{ }}`)
 
-The scripts automatically wrap JSON Path values in `{{ }}` during json generation.
+The system automatically wraps JSON Path values in `{{ }}` during replacement.
 
 Example:
-```
+
+```text
 Bookmark Name: ACDateAdopted
 Json Path: CaresCorrespondence.formData.CountyLegacyDataElements.AdoptChild.DateAdopted
 ```
 
 Becomes:
-```
+
+```text
 {{CaresCorrespondence.formData.CountyLegacyDataElements.AdoptChild.DateAdopted}}
 ```
 
 ---
 
-## Workflow
-
-### 1. Extract and Normalize Bookmarks
-
-Processes original DOCX files and replaces valid bookmarks with their visible bookmark names.
-
-```bash
-python apply_bookmarks_to_docx.py
-```
-
-Outputs:
-- `output/bookmarks/*.docx`
-- `bookmarks_tally.csv`
-- `unique_bookmarks.csv`
-
-Only bookmarks listed in the Data Dictionary are processed.
-
----
-
-### 2. Apply JSON Path
-
-Replaces visible bookmark names with `{{JsonPath}}` json using the Data Dictionary.
-
-```bash
-python apply_json_to_docx.py
-```
-
-Outputs:
-- `output/json/*.docx`
-- `final_tally.csv`
-
----
-
 ## Key Features
 
-- Uses **Json Path** as the authoritative json source
-- Strict enforcement of `Bookmark Name` from the official dictionary
-- Automatic `{{ }}` json wrapping
+- Single-command execution via `main.py`
+- Strict enforcement of official Bookmark Name definitions
+- Optimized regex-based replacement for performance
 - Table-aware DOCX parsing
-- Full audit trail of replacements
-- Safe handling of missing or invalid bookmarks
+- Safe handling of nested tables
+- Full CSV-based audit trail
+- No hard-coded county or environment values
 
 ---
 
@@ -121,10 +130,11 @@ pip install pandas python-docx openpyxl
 
 ## License
 
-MIT License. See `LICENSE` file for details.
+MIT License
 
 ---
 
 ## Maintainer
 
 Joshua Coda
+
